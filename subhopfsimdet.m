@@ -1,6 +1,6 @@
-function [tv,xv]=hopfsimdet(mu,omega,tstart,tend,zinit,dt)
+function [tv,xv]=subhopfsimdet(mu,omega,tstart,tend,zinit,dt)
 %
-% Deterministic simulation of the normal form of a Hopf bifurcation 
+% Deterministic simulation of the normal form of a SUBCRITICAL Hopf bifurcation 
 %
 % function [tv,zv]=hopfsimdet(mu,omega,tstart,tend,zinit,dt)
 % zinit includes  starting conditions for x1 and x2; [x1(0) x2(0)]'
@@ -23,6 +23,6 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function fv = hopfdetfun(t,x,mu,omega)
-fv(1,1) = mu*x(1) - omega*x(2) - x(1)*(x(1).^2 + x(2).^2);
-fv(2,1) = omega*x(1) + mu*x(2) - x(2)*(x(1).^2 + x(2).^2);
+fv(1,1) = mu*x(1) - omega*x(2) + x(1)*(x(1).^2 + x(2).^2) - x(1)*(x(1).^4 + x(2).^4);
+fv(2,1) = omega*x(1) + mu*x(2) + x(2)*(x(1).^2 + x(2).^2) - x(1)*(x(1).^4 + x(2).^4);
 end
